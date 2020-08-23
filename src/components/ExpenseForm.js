@@ -1,7 +1,6 @@
 import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
 
 export default class ExpenseForm extends React.Component {
   constructor(props) {
@@ -43,7 +42,9 @@ export default class ExpenseForm extends React.Component {
     e.preventDefault();
 
     if (!this.state.description || !this.state.amount) {
-      this.setState(() => ({ error: 'Please provide description and amount.' }));
+      this.setState(() => ({
+        error: 'Please provide description and amount.'
+      }));
     } else {
       this.setState(() => ({ error: '' }));
       this.props.onSubmit({
@@ -84,11 +85,10 @@ export default class ExpenseForm extends React.Component {
             placeholder="Add a note for your expense (optional)"
             value={this.state.note}
             onChange={this.onNoteChange}
-          >
-          </textarea>
+          ></textarea>
           <button>Add Expense</button>
         </form>
       </div>
-    )
+    );
   }
 }
